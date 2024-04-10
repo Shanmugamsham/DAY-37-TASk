@@ -19,7 +19,7 @@ routs.post("/create",(req,res)=>{
              res.status(400).send(`try again`)
           }
           else {
-            res.status(200).send(`Filename has been created`)
+            res.status(200).send(`File has been created`)
     
           }
         });
@@ -37,7 +37,7 @@ routs.post("/create",(req,res)=>{
     try {
        fs.readdir("./file", (err, files) => {
           if (err) {
-            console.log(err);
+            res.status(400).send(`try again`)
           } 
           else {
 
