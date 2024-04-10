@@ -5,8 +5,11 @@
   "main": "practice.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node practice.js"
+    "start": "node index.js"
   },
   "author": "shanmugam",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
