@@ -7,11 +7,11 @@ const timedateinfo = new Date();
 const trimmedTime = time.split(":").join("_");
 const date = timedateinfo.toLocaleDateString();
 const trimmedDate = date.split("/").join("");
-const fileName = trimmedDate + "-" + trimmedTime;
+const fileName = trimmedTime;
 
 
 
-routs.post("/create",(req,res)=>{
+routs.get("/data",(req,res)=>{
     try {
        
        fs.writeFile(`./file/${fileName}.txt`, time, (err) => {
