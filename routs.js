@@ -1,20 +1,26 @@
 const routs=require("express").Router()
 const fs=require("fs")
 const timedateinfo = new Date();
- const time = timedateinfo.toLocaleTimeString("en-US", {
-   hour12: false,
- });
-const trimmedTime = time.split(":").join("_");
-const date = timedateinfo.toLocaleDateString();
-const trimmedDate = date.split("/").join("");
-const fileName = trimmedTime;
 
 
+var cdate=appentzero(timedateinfo.getDate())
+var cmonth=appentzero(timedateinfo.getMonth()+1)
+var cyear=timedateinfo.getFullYear()
+
+var chour=appentzero(timedateinfo.getHours())
+var cmin=appentzero(timedateinfo.getMinutes())
+var csec=appentzero(timedateinfo.getSeconds())
+
+var display="("+cdate+"-"+cmonth+"-"+cyear+")_"+"("+chour+"-"+cmin+"-"+csec+")"
+var timeanddate="Date"+"("+cdate+"/"+cmonth+"/"+cyear+")"+ "Time"+"("+chour+":"+cmin+":"+csec+")"
+function appentzero(value){
+  return (value<10)?"0"+value:value;
+}
 
 routs.get("/data",(req,res)=>{
     try {
        
-       fs.writeFile(`./file/${fileName}.txt`, time, (err) => {
+       fs.writeFile(`./file/${display}.txt`,timeanddate, (err) => {
           if (err) {
              res.status(400).send(`try again`)
           }
